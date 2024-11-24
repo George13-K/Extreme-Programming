@@ -1,0 +1,11 @@
+<!--pages/selectassociations/selectassociations.wxml-->
+<view class="page-section">
+      <view class="page-section-title">请选择联系人</view>
+      <view class="weui-cells weui-cells_after-title">
+        <checkbox-group bindchange="checkboxChange">
+        <label class="checkbox" wx:for="{{contacts}}">
+          <checkbox value="{{item._id}}" />{{item.name}}</label>
+      </checkbox-group>
+      </view>
+</view>
+<button type="primary" bind:tap="submitcontact">确认选择</button>

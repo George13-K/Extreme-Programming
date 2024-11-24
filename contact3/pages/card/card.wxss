@@ -1,0 +1,82 @@
+.contact-detail {
+  padding: 40rpx;
+  text-align: center;
+}
+
+.avatar-section {
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 50%;
+  background-color: #ccc;
+  overflow: hidden;
+  margin: 0 auto 40rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  box-shadow: 0 4rpx 8rpx rgba(0, 0, 0, 0.2);
+}
+
+.avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.select-text {
+  position: absolute;
+  color: rgb(0, 0, 0);
+  font-size: 24rpx;
+  text-align: center;
+  line-height: 1.5;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.editable {
+  border: 1px solid #ddd;
+  padding: 10rpx;
+  border-radius: 8rpx;
+  margin-bottom: 30rpx;
+  background-color: #f9f9f9;
+}
+
+.label {
+  font-size: 28rpx;
+  color: #999;
+  margin-bottom: 10rpx;
+}
+
+.value {
+  font-size: 36rpx;
+  color: #000;
+  width: 100%;
+  background-color: transparent;
+  border: none;
+}
+
+.operation-section {
+  margin-top: 40rpx;
+  display: flex;
+  justify-content: space-around;
+}
+
+button {
+  width: 300rpx;
+  height: 80rpx;
+  background-color: #007aff;
+  color: white;
+  border-radius: 20rpx;
+  font-size: 32rpx;
+  text-align: center;
+}
+
+button[type="warn"] {
+  background-color: #ff4d4d;
+  color: #ffffff;
+}
