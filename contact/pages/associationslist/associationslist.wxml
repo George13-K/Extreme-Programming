@@ -1,0 +1,56 @@
+<!-- navi -->
+<view class="navi">
+  <view class="back-icon" bindtap="onBack">
+    <text class="back-symbol" style="position: relative; left: 0rpx; top: 68rpx">《</text>
+  </view>
+  <view class="navitext">
+    <text class="static-text">与{{name}}关联的联系人</text>
+  </view>
+  <view class="add-circle" bindtap="onAddContact">
+    <text class="add-text">+</text>
+  </view>
+</view>
+
+
+
+
+<!-- 搜索框独立图层 -->
+<view class="search-container">
+  <input class="search-input" placeholder="搜索联系人" bindinput="onSearchInput" />
+</view>
+
+<!-- contact -->
+<scroll-view class="contact" 
+    scroll-y="true" 
+    scroll-into-view="{{loc}}" 
+    style="height: {{screenHeight}}rpx; position: relative; left: 0rpx; top: 427rpx" 
+    scroll-with-animation="true">
+  <block wx:for="{{filteredContacts}}" wx:key="letter">
+    <view class="group" wx:if="{{item.group.length != 0}}" id="{{item.letter}}">
+      <view class="header">{{item.letter}}</view>
+      <view class="card" 
+          wx:for="{{item.group}}" 
+          wx:for-item="star" 
+          wx:key="*this" > 
+        <navigator 
+          url="/pages/card/card?id={{star._id}}">
+        <view class="name">{{star.name}}</view>
+      </navigator>
+   
+      </view>
+      
+        
+        
+     
+      <view class="line"></view>
+    </view>
+    <view wx:else id="{{item.letter}}"></view>
+  </block>
+</scroll-view>
+
+<!-- 右侧字母栏 -->
+<view class="shortcut">
+  <view class="letter" wx:for="{{letters}}" wx:key="*this" bindtap="onTapScroll" data-loc="{{item}}">
+    {{item}}
+  </view>
+</view>
