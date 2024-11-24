@@ -1,0 +1,67 @@
+<!-- navi -->
+<view class="navi">
+  <view class="navitext">
+    <text class="scrolling-text">小小烧鱼</text>
+    <text class="static-text">通讯录</text>
+  </view>
+  <view class="add-circle" bindtap="onAddContact">
+    <text class="add-text">+</text>
+  </view>
+</view>
+
+
+<!-- 搜索框独立图层 -->
+<view class="search-container">
+  <input class="search-input" placeholder="搜索联系人" bindinput="onSearchInput" />
+  
+</view>
+
+<!-- contact -->
+<scroll-view class="contact" 
+    scroll-y="true" 
+    scroll-into-view="{{loc}}" 
+    style="height: {{screenHeight}}rpx; position: relative; left: 0rpx; top: 427rpx" 
+    scroll-with-animation="true">
+  <block wx:for="{{filteredContacts}}" wx:key="letter">
+    <view class="group" wx:if="{{item.group.length != 0}}" id="{{item.letter}}">
+      <view class="header">{{item.letter}}</view>
+      <view class="card" 
+          wx:for="{{item.group}}" 
+          wx:for-item="star" 
+          wx:key="*this" > 
+        <navigator 
+          url="/pages/card/card?id={{star._id}}">
+        <view class="name" style="width: 487rpx; display: block; box-sizing: border-box; height: 58rpx">{{star.name}}</view>
+      </navigator>
+      <block wx:if="{{star.status==1}}">
+          <button class="collect_btn" style="width: 60px;margin: 0;" bind:tap="collect" data-id="{{star._id}}" data-status="{{star.status}}">
+            <image src="../../img/nostar.png" style="width: 58rpx; height: 64rpx; display: inline-block; box-sizing: border-box"></image>
+          </button>
+        </block>
+        <block wx:else>
+          <button class="collect_btn" style="width: 60px;margin: 0;" bind:tap="collect" data-id="{{star._id}}" data-status="{{star.status}}">
+            <image src="../../img/star.png" style="width: 24px;height: 32px;"></image>
+          </button>
+        </block>
+      </view>
+      
+        
+        
+     
+      <view class="line"></view>
+    </view>
+    <view wx:else id="{{item.letter}}"></view>
+  </block>
+  <view class="operation-section">
+    <button type="button" bindtap="importData">导入联系人</button>
+    <button type="button" bindtap="exportData">导出联系人</button>
+</view>
+</scroll-view>
+
+<!-- 右侧字母栏 -->
+<view class="shortcut">
+  <view class="letter" wx:for="{{letters}}" wx:key="*this" bindtap="onTapScroll" data-loc="{{item}}">
+    {{item}}
+  </view>
+</view>
+

@@ -1,0 +1,78 @@
+<view class="container">
+  <!-- 页面标题 -->
+  <view class="header">
+    <text>添加联系人</text>
+  </view>
+
+  <!-- 表单开始 -->
+  <view class="form">
+      <!-- 上传头像 -->
+      <view class="form-item">
+      <view class="avatar-section" bindtap="chooseAvatar">
+        <image class="avatar" src="{{avatar || '/img/default-avatar.png'}}" mode="aspectFill" />
+        <text class="select-text" wx:if="{{!avatar}}">选择头像</text>
+      </view>
+    </view>
+    <!-- 姓名 -->
+    <view class="form-item">
+      <label>姓名</label>
+      <input type="text" placeholder="请输入姓名" bindinput="onNameInput" />
+    </view>
+
+    <!-- 电话 -->
+    <view class="form-item">
+      <label>电话</label>
+      <input type="number" placeholder="请输入电话号码" bindinput="onPhoneInput" />
+    </view>
+
+    <!-- 电子邮件 -->
+    <view class="form-item">
+      <label>电子邮件</label>
+      <input type="text" placeholder="请输入电子邮件" bindinput="onEmailInput" />
+    </view>
+
+    <!-- 地址 -->
+    <view class="form-item">
+      <label>地址</label>
+      <input type="text" placeholder="请输入地址" bindinput="onAddressInput" />
+    </view>
+
+    <!-- 备注 -->
+    <view class="form-item">
+      <label>备注</label>
+      <textarea placeholder="请输入备注内容" bindinput="onNoteInput"></textarea>
+    </view>
+
+    <!-- 其他信息动态添加 -->
+    <view class="extra-info-section">
+      <block wx:for="{{extraInfoList}}" wx:key="index">
+        <view class="form-item">
+          <input 
+            class="info-type" 
+            placeholder="信息类型" 
+            bindinput="onExtraInfoTypeInput" 
+            data-index="{{index}}" 
+            value="{{item.type}}" 
+          />
+          <input 
+            class="info-content" 
+            placeholder="信息内容" 
+            bindinput="onExtraInfoContentInput" 
+            data-index="{{index}}" 
+            value="{{item.content}}" 
+          />
+        </view>
+      </block>
+    </view>
+
+    <!-- 添加其他信息按钮 -->
+    <view class="form-item">
+      <button bindtap="addExtraInfo">添加其他信息</button>
+    </view>
+
+    <!-- 保存按钮 -->
+    <view class="form-item">
+      <button bindtap="saveContact">保存联系人</button>
+    </view>
+  </view>
+</view>

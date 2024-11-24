@@ -1,0 +1,19 @@
+/* pages/selectassociations/selectassociations.wxss */
+.intro {
+  margin: 30px;
+  text-align: center;
+}
+
+.checkbox, checkbox {
+  display: flex;
+  flex-direction: row;
+  height: 30px;
+  line-height: 30px;
+}
+.page-section-title{
+  font-size: 18px;
+    margin-bottom: 10px;
+}
+.page-section{
+  padding: 30px;
+}
